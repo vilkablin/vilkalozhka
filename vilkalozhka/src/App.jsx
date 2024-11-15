@@ -8,7 +8,7 @@ import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
 import  './styles/index.scss'
 import ProfilePage from './pages/ProfilePage'
-import AddRecipe from './pages/AddRecipe'
+// import AddRecipe from './pages/AddRecipe'
 import RecipesPage from './pages/RecipesPage'
 import SubscribesPage from './pages/SubscribesPage'
 import FavouritesPage from './pages/FavouritesPage'
@@ -29,12 +29,12 @@ function App() {
       <Route path="/exit" element={<Exit/>} />
       <Route path="/signup" element= {<SignupPage/>}/>
       <Route path="/profile" element= {<ProfilePage/>}/>
-      <Route path='/add-recipe' element={<AddRecipe/>} />
+      {/* <Route path='/add-recipe' element={<AddRecipe/>} /> */}
       <Route path='/recipes' element={<RecipesPage/>} />
       <Route path='/subscribes' element={<SubscribesPage/>} />
       <Route path='/favourites' element={<FavouritesPage/>} />
       <Route path='/editProfile' element={<EditProfilePage/>} />
-      <Route path='/admin' element={<AdminPanelPage/>} />
+    <Route path='/admin' element={<AdminPanelPage/>} />
       </Routes>
     <Footer/>
     </AuthProvider>

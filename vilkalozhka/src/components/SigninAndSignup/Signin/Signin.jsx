@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Container from "../../Сontainer/Сontainer";
 import "../Signin.scss";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,12 +13,12 @@ const Signin = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:8888/vilkalozhka-api/actions/user/signin.php",
+        // Use .env variables
+        "http://localhost:8888/actions/user/signin.php",
         {
+          credentials: 'include',
+          'Content-Type': 'application/json',
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
           body: JSON.stringify({
             username,
             password,
@@ -43,7 +43,7 @@ const Signin = () => {
       navigate('/profile');
 
     } catch (error) {
-      setError("Ошибка при подключении к серверу");
+      setError(`Ошибка при подключении к серверу: ${error}`);
     }
   };
 

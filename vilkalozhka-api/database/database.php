@@ -1,11 +1,8 @@
-<?php 
+<?php
 
-try{
-
-$dsn = 'mysql:host=localhost;dbname=vilkalozhka';
-$pdo = new PDO($dsn, 'root', 'root');
+try {
+  $dsn = 'mysql:host=localhost;dbname=vilkalozhka';
+  $pdo = new PDO($dsn, 'root', '');
+} catch (PDOException $e) {
+  die('Ошибка подключения бд ' . $e->getMessage());
 }
-catch(PDOException $e) {
-  die('Ошибка подключения бд ' .$e->getMessage());
-}
-?>
