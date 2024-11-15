@@ -13,15 +13,16 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (password !== password_r) {
       setError('Пароли не совпадают');
       return;
     }
-  
+
     try {
-      const response = await fetch('http://localhost:8888/vilkalozhka-api/actions/user/signup.php', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/actions/user/signup.php`, {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -32,25 +33,25 @@ const Signup = () => {
           password_r,
         }),
       });
-    
+
       const data = await response.json();
-    
+
 
       if (!response.ok) {
-        setError(data.message); 
+        setError(data.message);
         return;
-      } 
-  
+      }
+
       const token = data.data.token;
-      localStorage.setItem('token' ,token);
+      localStorage.setItem('token', token);
       navigate('/profile');
-      
+
     } catch (error) {
       setError('Ошибка при регистрации');
     }
-    
+
   };
-  
+
 
   return (
     <Container>

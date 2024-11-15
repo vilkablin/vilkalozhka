@@ -13,11 +13,13 @@ const Signin = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        // Use .env variables
-        "http://localhost:8888/actions/user/signin.php",
+        // Use .env variables like here
+        `${import.meta.env.VITE_BACKEND_URL}/actions/user/signin.php`,
         {
           credentials: 'include',
-          'Content-Type': 'application/json',
+          headers: {
+            'Content-Type': 'application/json',
+          },
           method: "POST",
           body: JSON.stringify({
             username,
@@ -39,7 +41,7 @@ const Signin = () => {
       }
 
       const token = data.data.token;
-      localStorage.setItem('token' ,token);
+      localStorage.setItem('token', token);
       navigate('/profile');
 
     } catch (error) {

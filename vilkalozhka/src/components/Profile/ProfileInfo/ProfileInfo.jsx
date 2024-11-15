@@ -78,14 +78,13 @@ const ProfileInfo = () => {
         }
 
         const response = await fetch(
-          "http://localhost:8888/vilkalozhka-api/actions/user/getUserInfo.php",
+          `${import.meta.env.VITE_BACKEND_URL}/actions/user/getUserInfo.php`,
           {
-            method: "GET",
+            credentials: 'include',
             headers: {
-              Authorization: "Bearer c2e7ba316454f4efa991e260a6a8077c",
-              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
             },
-              mode: 'cors'
+            // mode: 'cors'
           }
         )
           .then((response) => response.json())
